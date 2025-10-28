@@ -1,0 +1,35 @@
+@use "settings";
+
+html{
+    margin:0;
+    padding:0;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+body{
+    padding:0%;
+    margin:0;
+    background: settings.$main-color-dark;
+    font-family: settings.$generic-font;
+    color:settings.$main-color-light;
+}
+
+section{
+    min-height:100vh;
+    width:100vh;
+}
+
+nav{
+    position:fixed;
+    top:0;
+    padding:1%;
+    width:100%;
+    display:flex;
+    justify-content: space-between;
+    
+    img{
+        width:80px;
+        height:auto;
+    }
+}

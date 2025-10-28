@@ -4,11 +4,36 @@
   "version": "0.0.0",
   "source": "src/index.html",
   "scripts": {
-    "start": "parcel",
-    "build": "parcel build"
+    "start": "npm-run-all clean parcel:dev",
+    "build": "npm-run-all clean parcel build",
+    "clean": "rimraf dist .parcel-cache",
+    "parcel:dev": "parcel",
+    "checkscss": "stylelint assets/styles/*.scss",
+    "fixscss": "stylelint --fix assets/styles/*.scss"
   },
-  "dependencies": {},
   "devDependencies": {
-    "parcel": "^2.14.0"
+    "@eslint/js": "^9.38.0",
+    "@parcel/transformer-sass": "^2.16.0",
+    "eslint": "^9.38.0",
+    "globals": "^16.4.0",
+    "npm-run-all": "^4.1.5",
+    "parcel": "^2.14.0",
+    "posthtml-include": "^2.0.1",
+    "rimraf": "^6.0.1",
+    "sass": "^1.93.2",
+    "stylelint": "^16.25.0",
+    "stylelint-config-standard": "^39.0.1"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ],
+  "dependencies": {
+    "gsap": "^3.13.0",
+    "posthtml": "^0.16.7",
+    "stylelint-order": "^7.0.0",
+    "stylelint-scss": "^6.12.1",
+    "stylelint-selector-bem-pattern": "^4.0.1"
   }
 }

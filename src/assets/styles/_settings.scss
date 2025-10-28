@@ -1,0 +1,19 @@
+@use "sass:color";
+
+@font-face {
+    font-family: "Instrument Sans";
+    src: url("../fonts/InstrumentSans-SemiBold.ttf") format("truetype");
+    font-weight: 600;
+    font-style: normal;
+  }
+
+$main-color-dark: #000;
+$main-color-light: #D9D9D9;
+$color-green: #77F773;
+$color-blue: #73E8F7;
+$color-red: #F77375;
+$color-purple: #8D73F7;
+$generic-font: "Instrument Sans", sans-serif;
+$z-index-img: -1;
+$mq-min-width-phone: 690px;
+$mq-min-width-tablet: 999px;

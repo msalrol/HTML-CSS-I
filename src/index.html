@@ -1,13 +1,25 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Parcel Vanilla App</title>
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <h1>Parcel Vanilla App</h1>
-    <p>Edit <code>src/index.html</code> to get started!</p>
-  </body>
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parcel Vanilla App</title>
+  <link rel="stylesheet" href="assets/styles/main.scss">
+</head>
+
+<body>
+  <include src="assets/includes/header.html"></include>
+  <main>
+    <section>
+      <div class="hero">
+        <video autoplay muted playsinline loop preload="auto">
+          <source src="/src/assets/images/ruta-iberica-portada-video.mp4" type="video/mp4">
+        </video>
+        <h1>La ruta ibérica</h1>
+      </div>
+    </section>
+  </main>
+</body>
+
 </html>

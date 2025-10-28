@@ -1,0 +1,11 @@
+
+@mixin greyscale($amount:100%){
+    filter: grayscale($amount);
+}
+
+
+/* Tamaño de fuentes responsive */
+@function fluid-font($min, $vw, $max) {
+    @return clamp($min, $vw, $max);
+  }
+  

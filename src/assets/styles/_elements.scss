@@ -1,0 +1,6 @@
+@use "settings";
+@use "tools";
+
+h1{
+    font-size: tools.fluid-font(5rem, 14vw, 19rem);
+}

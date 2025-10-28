@@ -1,0 +1,25 @@
+@use "settings";
+@use "tools";
+
+.hero{
+    position:relative;
+    width:100vw;
+    height:100vh;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    
+    video{
+        position:absolute;
+        top:0;
+        left:0;
+        width:100%;
+        z-index: settings.$z-index-img;
+
+        @include tools.greyscale(100%);
+    }
+
+    h1{
+        mix-blend-mode: difference;
+    }
+}
