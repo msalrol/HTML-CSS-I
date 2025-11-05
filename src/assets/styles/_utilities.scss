@@ -1,0 +1,11 @@
+
+.blur-load{
+    opacity:0;
+    filter:blur(30px);
+    transition: opacity 1.8s ease, filter 1.8s ease;
+
+    &__visible{
+        opacity:1;
+        filter:blur(0);
+    }
+}

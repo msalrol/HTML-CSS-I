@@ -13,13 +13,39 @@
   <main>
     <section>
       <div class="hero">
-        <video autoplay muted playsinline loop preload="auto">
+        <video class="blur-load" autoplay muted playsinline loop preload="auto">
           <source src="/src/assets/images/ruta-iberica-portada-video.mp4" type="video/mp4">
         </video>
         <h1>La ruta ibérica</h1>
       </div>
     </section>
+    <section>
+      <div class="fila-general">
+        <div class="columna-mitad">
+          <h2>Recorre la España más electrónica</h2>
+          <p>La Ruta Ibérica es una página que recoge las discotecas, fiestas y eventos de electrónica más importantes
+            de nuestro país para que no te pierdas los eventos más relevantes de nuestro panorama actual. Desde míticas
+            discotecas hasta los festivales más cañeros, ¡explora y apunta tus eventos favoritos!</p>
+        </div>
+      </div>
+      <div class="fila-general">
+        <div class="columna-completa">
+          <h3 class="tag tag--verde">Discotecas</h3>
+          <div id="discotecas" class="card-container discotecas">
+            
+          </div>
+          <div class="card-container fiestas">
+            
+          </div>
+          <div class="card-container festivales">
+          
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <script type="module" src="scripts/app.js"></script>
 </body>
 
 </html>

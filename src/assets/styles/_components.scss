@@ -1,0 +1,60 @@
+@use "settings";
+@use "tools";
+
+.tag{
+    width:fit-content;
+    padding:5px 10px;
+    border-radius: 20px;
+    color:settings.$main-color-dark;
+
+    &--azul{
+        background-color:settings.$color-blue;
+    }
+
+    &--verde{
+        background-color:settings.$color-green;
+    }
+
+    &--rojo{
+        background-color:settings.$color-red;
+    }
+}
+
+
+
+
+/* #CARD PRINCIPAL  */
+.card-container{
+    display:flex;
+    gap:40px;
+
+    &__card-element{
+        flex: 0 0 calc((100% / 3) - 20px);
+        display:flex;
+        flex-direction:column;
+    }
+    
+    &__contenedor-titulo{
+        padding-top:4%;
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+
+        span{
+            padding:5px 8px;
+            height:auto;
+            border-radius:10px;
+            background-color: settings.$light-color-transparent;
+            font-size:12px;
+            text-transform: uppercase;
+        }
+    }
+
+    img{
+        max-width:100%;
+        height:auto;
+        border-radius:20px;
+        aspect-ratio: 3 / 2;  
+        object-fit: cover;
+    }
+}
