@@ -1,3 +1,6 @@
+import barracaImg from '../../public/images/discoteca-barraca-club-valencia-ruta-iberica.jpg';
+import amnesiaImg from '../assets/images/discoteca-amnesia-ibiza.jpg';
+console.log("IMAGEN:", barracaImg);
 
 export const datosapp = {
     discotecas: [
@@ -7,7 +10,7 @@ export const datosapp = {
             precio: 'Desde 20€',
             descripcionCorta: 'Tras más de 50 años en la elite, el club ha cambiado, la gente ha cambiado, todo ha cambiado, excepto la ilusión de su gente que sigue intacta desde el primer día.',
             descripcionLarga: 'Barraca se ha consolidado como uno de los más importantes clubes underground de España y es donde se lleva a cabo una de las programaciones más reclamadas de nuestro país. Es sin duda alguna una de las referencias indiscutibles del clubbing nacional. Tras más de 50 años en la elite, el club ha cambiado, la gente ha cambiado, todo ha cambiado, excepto la ilusión de su gente que sigue intacta desde el primer día. Techno, electro, house y minimal vienen de la mano en este club que nos gusta definir como ecléctico, cosmopolita, multicultural y de mente abierta.',
-            img: '/src/assets/images/discoteca-barraca-club-valencia-ruta-iberica.jpg'
+            img: barracaImg
         },
         {
             nombre: 'Pacha',
@@ -15,7 +18,7 @@ export const datosapp = {
             precio: 'Desde 25€',
             descripcionCorta: 'Icono del clubbing internacional con noches inolvidables y DJs de fama mundial.',
             descripcionLarga: 'Pacha Ibiza es uno de los clubes más emblemáticos del mundo. Su programación combina house, techno y música comercial de alta calidad. Con más de 50 años de historia, sigue siendo un referente del ocio nocturno, con eventos exclusivos, decoraciones únicas y una experiencia VIP que marca la diferencia.',
-            img: '../images/discoteca-pacha-ibiza.jpg'
+            img: amnesiaImg
         },
         {
             nombre: 'Razzmatazz',
@@ -23,7 +26,7 @@ export const datosapp = {
             precio: 'Desde 18€',
             descripcionCorta: 'Diversión asegurada en 5 salas con estilos musicales distintos.',
             descripcionLarga: 'Razzmatazz es un club legendario de Barcelona que ofrece múltiples ambientes: indie, electrónica, pop y rock. Cada sala tiene su propia identidad, lo que permite disfrutar de distintos estilos en una sola noche. Es un punto de encuentro para locales y turistas que buscan experiencias musicales variadas y de calidad.',
-            img: '../images/discoteca-razzmatazz-barcelona.jpg'
+            img: '../assets/images/discoteca-razzmatazz-barcelona.jpg'
         },
         {
             nombre: 'Opium',
@@ -31,7 +34,7 @@ export const datosapp = {
             precio: 'Desde 30€',
             descripcionCorta: 'Lujo y fiesta en primera línea de playa, con DJs internacionales.',
             descripcionLarga: 'Opium Barcelona combina club y restaurante, ofreciendo música electrónica de primer nivel junto a un ambiente exclusivo frente al mar. Su programación incluye residentes y DJs internacionales, creando noches de alto nivel con decoración sofisticada y servicio premium. Ideal para quienes buscan glamour y fiesta en la ciudad condal.',
-            img: '../images/discoteca-opium-barcelona.jpg'
+            img: '/images/discoteca-opium-barcelona.jpg'
         },
         {
             nombre: 'Amnesia',

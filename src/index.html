@@ -4,47 +4,68 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Parcel Vanilla App</title>
+  <title>La ruta ibérica – Música electrónica en España</title>
   <link rel="stylesheet" href="assets/styles/main.scss">
 </head>
 
-<body>
+<body id="home">
   <include src="assets/includes/header.html"></include>
-  <main>
-    <section>
-      <div class="hero">
-        <video class="blur-load" autoplay muted playsinline loop preload="auto">
-          <source src="/src/assets/images/ruta-iberica-portada-video.mp4" type="video/mp4">
-        </video>
-        <h1>La ruta ibérica</h1>
-      </div>
-    </section>
-    <section>
-      <div class="fila-general">
-        <div class="columna-mitad">
-          <h2>Recorre la España más electrónica</h2>
-          <p>La Ruta Ibérica es una página que recoge las discotecas, fiestas y eventos de electrónica más importantes
-            de nuestro país para que no te pierdas los eventos más relevantes de nuestro panorama actual. Desde míticas
-            discotecas hasta los festivales más cañeros, ¡explora y apunta tus eventos favoritos!</p>
-        </div>
-      </div>
-      <div class="fila-general">
-        <div class="columna-completa">
-          <h3 class="tag tag--verde">Discotecas</h3>
-          <div id="discotecas" class="card-container discotecas">
-            
-          </div>
-          <div class="card-container fiestas">
-            
-          </div>
-          <div class="card-container festivales">
-          
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
+  <div id="smooth-wrapper">
 
+    <main>
+      <div id="smooth-content">
+        <section>
+          <div class="hero">
+            <video aria-hidden="true" class="blur-load" autoplay muted playsinline loop preload="auto">
+              <source src="/src/assets/images/ruta-iberica-portada-video.mp4" type="video/mp4">
+            </video>
+            <h1>La ruta ibérica</h1>
+          </div>
+        </section>
+        <section>
+          <div class="fila-general">
+            <div class="columna-flex">
+              <div class="columna-flex__mitad" style="background-color:black">
+                <h2>Recorre la España más electrónica</h2>
+                <p>La Ruta Ibérica es una página que recoge las discotecas, fiestas y eventos de electrónica más
+                  importantes
+                  de nuestro país para que no te pierdas los eventos más relevantes de nuestro panorama actual. Desde
+                  míticas
+                  discotecas hasta los festivales más cañeros, ¡explora y apunta tus eventos favoritos!</p>
+              </div>
+              <div class="columna-flex__mitad scroll-infinito">
+              </div>
+            </div>
+            <div>
+              <div class="columna-completa">
+                <a href="/src/discotecas.html">
+                  <h3 aria-label="Ver todas las discotecas" class="tag tag--verde">Discotecas</h3>
+                </a>
+                <div id="discotecas" class="card-container discotecas" role="region" aria-labelledby="titulo-discotecas">
+
+                </div>
+                <a href="/src/fiestas.html">
+                  <h3 aria-label="Ver todas las fiestas" class="tag tag--azul">Fiestas</h3>
+                </a>
+                <div class="card-container fiestas" role="region" aria-labelledby="titulo-fiestas">
+
+                </div>
+                <a href="/src/festivales.html">
+                  <h3 aria-label="Ver todos los festivales" class="tag tag--rojo">Festivales</h3>
+                </a>
+                <div class="card-container festivales" role="region" aria-labelledby="titulo-festivales">
+
+                </div>
+              </div>
+            </div>
+            <div class="fila-general">
+              <div class="scroll-infinito"></div>
+            </div>
+        </section>
+        <include src="assets/includes/footer.html"></include>
+      </div>
+    </main>
+  </div>
   <script type="module" src="scripts/app.js"></script>
 </body>
 

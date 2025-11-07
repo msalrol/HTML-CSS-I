@@ -5,11 +5,13 @@
   "source": "src/index.html",
   "scripts": {
     "start": "npm-run-all clean parcel:dev",
-    "build": "npm-run-all clean parcel build",
+    "build": "npm-run-all clean parcel:build",
     "clean": "rimraf dist .parcel-cache",
-    "parcel:dev": "parcel",
+    "parcel:dev": "parcel src/*.html",
+    "parcel:build": "parcel build src/*.html",
     "checkscss": "stylelint assets/styles/*.scss",
-    "fixscss": "stylelint --fix assets/styles/*.scss"
+    "fixscss": "stylelint --fix assets/styles/*.scss",
+    "preview": "serve dist"
   },
   "devDependencies": {
     "@eslint/js": "^9.38.0",
@@ -21,6 +23,7 @@
     "posthtml-include": "^2.0.1",
     "rimraf": "^6.0.1",
     "sass": "^1.93.2",
+    "serve": "^14.2.5",
     "stylelint": "^16.25.0",
     "stylelint-config-standard": "^39.0.1"
   },

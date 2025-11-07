@@ -2,7 +2,13 @@
 @use "tools";
 
 h1{
-    font-size: tools.fluid-font(5rem, 14vw, 19rem);
+    font-size: tools.fluid-font(3.5rem, 9vw, 12rem);
+    margin:5% 0;
+    line-height:1.1;
+
+    @include tools.respond(md){
+        margin-top:15%;
+    }
 }
 
 h2{
@@ -16,5 +22,9 @@ h3{
 h4{
     margin:0;
     font-size: 28px;
+}
+
+a{
+    text-decoration:none;
 }
 

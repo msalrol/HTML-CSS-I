@@ -1,4 +1,5 @@
 @use "settings";
+@use "tools";
 
 html{
     width:100vw;
@@ -6,6 +7,10 @@ html{
     padding:0;
     overflow-x: hidden;
     box-sizing: border-box;
+
+    @include tools.respond(md){
+        overflow-x:hidden;
+        }
 }
 
 body{
@@ -25,13 +30,70 @@ section{
 nav{
     position:fixed;
     top:0;
-    padding:1%;
+    left:0%;
     width:100%;
-    display:flex;
-    justify-content: space-between;
+    z-index:99999;
+    
+    @include tools.respond(md){
+        position:absolute;
+    }
+
+    .nav-wrapper{
+        padding:2% 4%;
+        display:flex;
+        justify-content: space-between;
+
+        @include tools.respond(md){
+            padding: 3%;
+            
+        }
+    }
+
+    a{
+        color:white;
+        mix-blend-mode: difference;
+    }
     
     img{
         width:80px;
         height:auto;
+    }
+}
+
+footer{
+    padding: 0 2%;
+    margin-top:8%;
+
+    @include tools.respond(md){
+        padding: 2%;
+    }
+
+    h2{
+        margin:10px 0;
+    }
+
+    img{
+        width:15%;
+        height:auto;
+
+        @include tools.respond(md){
+            width:50%;
+        }
+    }
+
+    div{
+        padding-top:3%;
+        display:flex;
+        align-items:end;
+        justify-content:space-between;
+    }
+
+    p{
+        font-size:20px;
+        margin:5px 0;
+
+        @include tools.respond(md){
+            font-size:14px;
+        }
     }
 }

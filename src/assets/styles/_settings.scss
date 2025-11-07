@@ -18,3 +18,12 @@ $generic-font: "Instrument Sans", sans-serif;
 $z-index-img: -1;
 $mq-min-width-phone: 690px;
 $mq-min-width-tablet: 999px;
+
+$breakpoints: (
+  xs: 480px,
+  sm: 640px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1280px,
+  xxl: 1536px
+);

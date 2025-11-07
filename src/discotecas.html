@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La ruta ibérica – Discotecas de música electrónica en España</title>
+    <link rel="stylesheet" href="assets/styles/main.scss">
+</head>
+
+<body id="discotecas">
+    <header>
+        <include src="assets/includes/header.html"></include>
+    </header>
+    <div id="smooth-wrapper">
+        <main>
+            <div id="smooth-content">
+                <section>
+                    <div class="fila-general">
+                        <div class="columna-flex">
+                            <h1>Discotecas ibéricas</h1>
+                        </div>
+                        <div class="columna-flex">
+                            <img class="blur-load imagen-portada-interna"
+                                src="/src/assets/images/logo-footer-la-ruta-iberica.png" alt="Logo la Ruta Ibérica">
+                        </div>
+                    </div>
+                    <div class="fila-general">
+                        <div class="columna-completa">
+                            <div class="grid-tarjetas-tag-container" aria-label="Filtrar discotecas por ciudad">
+                                <span role="tab" aria-selected="true" data-ciudad="All">All</span>
+                                <span role="tab" data-ciudad="Valencia">Valencia</span>
+                                <span role="tab" data-ciudad="Barcelona">Barcelona</span>
+                                <span role="tab" data-ciudad="Madrid">Madrid</span>
+                                <span role="tab" data-ciudad="Granada">Granada</span>
+                                <span role="tab" data-ciudad="A coruña">A coruña</span>
+                                <span role="tab" data-ciudad="Bilbao">Bilbao</span>
+                            </div>
+                        </div>
+                        <div class="columna-completa">
+                            <div class="grid-tarjetas grid-discotecas">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <footer>
+                    <include src="assets/includes/footer.html"></include>
+                </footer>
+            </div>
+        </main>
+    </div>
+    <script type="module" src="scripts/app.js"></script>
+</body>
+
+</html>

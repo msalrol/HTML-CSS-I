@@ -7,10 +7,12 @@
     position:relative;
     width:100vw;
     height:100vh;
+    margin-bottom:6%;
     display:flex;
     align-items: center;
     justify-content: center;
-    
+    text-align:center;
+
     video{
         position:absolute;
         top:0;
@@ -19,9 +21,17 @@
         z-index: settings.$z-index-img;
 
         @include tools.greyscale(100%);
+
+        @include tools.respond(md){
+             width: 100%;
+             height: 100vh;
+             transform: scaleY(1.7);
+            }
     }
 
-    h1{
+    h1{ 
+        margin:0;
+        font-size: tools.fluid-font(5rem, 14vw, 19rem);
         mix-blend-mode: difference;
     }
 }
@@ -31,15 +41,27 @@
 
 /* #FILA GENERAL */
 .fila-general{
-    padding:4%;
-    display:flex;
+    padding:2% 4%;
     gap:50px;
+   
+    .columna-flex{
+        display:flex;
+        gap:50px;
+        align-items: center;
+        position:relative;
 
-    .columna-completa{
-        width: 100%;
+        @include tools.respond(md){
+        display:block;
+        }
+
+        &__mitad{
+            width:50%;
+            position:relative;
+
+            @include tools.respond(md){
+                width:100%;
+                }
+        }
       }
 
-    .columna-mitad{
-        width:50%;
-    }
 }

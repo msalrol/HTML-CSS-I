@@ -4,8 +4,15 @@
 .tag{
     width:fit-content;
     padding:5px 10px;
+    margin:0;
+    margin-top:7%;
     border-radius: 20px;
     color:settings.$main-color-dark;
+    transition: filter 0.5s ease;
+
+    &:hover{
+        filter:blur(2px);
+    }
 
     &--azul{
         background-color:settings.$color-blue;
@@ -27,11 +34,16 @@
 .card-container{
     display:flex;
     gap:40px;
+    transition: transform 0.2s ease;
 
     &__card-element{
         flex: 0 0 calc((100% / 3) - 20px);
         display:flex;
         flex-direction:column;
+        opacity:0;
+        transform: translateY(30px);
+        transition: all 0.5s ease;    
+
     }
     
     &__contenedor-titulo{
@@ -41,12 +53,15 @@
         justify-content:space-between;
 
         span{
-            padding:5px 8px;
-            height:auto;
-            border-radius:10px;
-            background-color: settings.$light-color-transparent;
-            font-size:12px;
-            text-transform: uppercase;
+            @include tools.tagcity;
+        }
+    }
+
+    button{
+        @include tools.buttonArrow;
+
+        svg{
+            fill:none;
         }
     }
 
@@ -57,4 +72,115 @@
         aspect-ratio: 3 / 2;  
         object-fit: cover;
     }
+}
+
+
+/* GRID CARDS INTERNO */
+
+.grid-tarjetas{
+    display:grid;
+    /* stylelint-disable-next-line unit-allowed-list */
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 40px;
+
+    @include tools.respond(md){
+        /* stylelint-disable-next-line unit-allowed-list */
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    &__grid-card-element{
+        display:flex;
+        flex-direction:column;
+        opacity:0;
+        transform: translateY(30px);
+        transition: all 0.5s ease;
+    }
+    
+    &__grid-contenedor-titulo{
+        padding-top:4%;
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+
+        span{
+            @include tools.tagcity;
+        }
+
+    }
+
+    button{
+        @include tools.buttonArrow;
+
+        svg{
+            fill:none;
+        }
+    }
+    
+
+    img{
+        max-width:100%;
+        height:auto;
+        border-radius:20px;
+        aspect-ratio: 3 / 2;  
+        object-fit: cover;
+    }
+}
+
+.grid-tarjetas-tag-container{
+    padding-bottom:3%;
+    grid-column: 1 / -1; 
+    display:flex;
+    flex-wrap: wrap;
+    gap:30px;
+
+    span{
+        transition: all 0.2s ease;
+
+        @include tools.tagcity;
+    }
+
+    span:hover{
+        background-color:white;
+        color:black;
+    }
+    
+    .span-selected{
+        background-color:white;
+        color:black;
+    }
+}
+
+/* SCROLL INFINITO */
+.scroll-infinito {
+    margin-top:5%;
+    display: flex;
+    white-space: nowrap;
+    position: relative;
+    animation-name: scroll;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    z-index:-1;
+  
+    @include tools.respond(md){
+        width:100vw!important;
+        margin:20% 0;
+        animation-duration:7s!important;
+        }
+
+  .shape {
+    flex-shrink: 0;
+    width: 177px;
+    height: 103px;
+    margin-right:-5px;
+  }
+
+  @keyframes scroll {
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(-100%);
+    }
+  }
 }

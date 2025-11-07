@@ -1,3 +1,4 @@
+@use "tools";
 
 .blur-load{
     opacity:0;
@@ -7,5 +8,21 @@
     &__visible{
         opacity:1;
         filter:blur(0);
+    }
+}
+
+.imagen-portada-interna{
+    position:absolute;
+    top:-20%;
+    right:-40%;
+    width:45%;
+    transform: translateY(-13vw);
+    z-index: -1;
+
+    @include tools.respond(md){
+        width: 100%;    
+        top: -40%;
+        right: -150%;
+        transform: translateY(-15vw);
     }
 }
