@@ -1,7 +1,7 @@
 //TARJETAS DE EVENTOS HOME
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { animacionTarjetasEventos } from "./app";
+import { animacionTarjetasEventos, cargarParaBlur } from "./app";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -16,8 +16,8 @@ export class CarouselCards {
     this.button.innerHTML = `<svg width="64" height="37" viewBox="0 0 64 37" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M2.50003 15.9099C1.11931 15.9099 2.65093e-05 17.0292 2.65093e-05 18.4099C2.65093e-05 19.7906 1.11931 20.9099 2.50003 20.9099V18.4099V15.9099ZM62.9529 20.1777C63.9292 19.2014 63.9292 17.6184 62.9529 16.6421L47.043 0.732225C46.0667 -0.244086 44.4837 -0.244086 43.5074 0.732225C42.5311 1.70854 42.5311 3.29145 43.5074 4.26776L57.6496 18.4099L43.5074 32.552C42.5311 33.5283 42.5311 35.1113 43.5074 36.0876C44.4837 37.0639 46.0667 37.0639 47.043 36.0876L62.9529 20.1777ZM2.50003 18.4099V20.9099H61.1851V18.4099V15.9099H2.50003V18.4099Z" fill="white"/>
     </svg>`;
-
-    this.contenedorTarjetas.classList.add('card-container')
+    this.contenedorTarjetas.classList.add('card-container');
+    this.contenedorBoton.classList.add('contenedor-boton');
   }
 
   generarTarjeta() {
@@ -39,7 +39,7 @@ export class CarouselCards {
           <span class="card-container__tag">${el.ciudad}</span>
         </div>
         <p>${el.descripcionCorta}</p>
-        <a href="${el.enlace}" aria-label="Ver más sobre ${el.nombre}><svg width="65" height="15" viewBox="0 0 65 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <a href="${el.enlace}" aria-label="Ver más sobre ${el.nombre}"><svg width="65" height="15" viewBox="0 0 65 15" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M63.91 8.07112C64.3006 7.6806 64.3006 7.04743 63.91 6.65691L57.5461 0.292946C57.1555 -0.0975785 56.5224 -0.0975785 56.1319 0.292946C55.7413 0.68347 55.7413 1.31664 56.1319 1.70716L61.7887 7.36401L56.1319 13.0209C55.7413 13.4114 55.7413 14.0446 56.1319 14.4351C56.5224 14.8256 57.1555 14.8256 57.5461 14.4351L63.91 8.07112ZM0 7.36401V8.36401H63.2029V7.36401V6.36401H0V7.36401Z"
             fill="white" />
@@ -59,11 +59,11 @@ export class CarouselCards {
   comportamientoBoton() {
     const tarjetas = this.contenedorTarjetas.querySelectorAll('.card-container__card-element');
     const totalTarjetas = tarjetas.length;
-    const anchoVisible = this.padre.clientWidth; // ancho del carrusel visible
+    const anchoVisible = this.padre.clientWidth; 
     const estilo = window.getComputedStyle(this.contenedorTarjetas);
     const gap = parseFloat(estilo.gap) || 0;
     const anchoTarjeta = tarjetas[0].offsetWidth;
-    const tarjetasVisibles = Math.floor(anchoVisible / anchoTarjeta); // cuántas caben
+    const tarjetasVisibles = Math.floor(anchoVisible / anchoTarjeta);
 
     let index = 0;
 
@@ -74,7 +74,7 @@ export class CarouselCards {
     this.button.addEventListener('click', () => {
       index++;
 
-      // cuando llega al final, vuelve al principio
+      
       if (index > totalTarjetas - tarjetasVisibles) {
         index = 0;
       }
@@ -108,10 +108,10 @@ export class GridEventos {
   generarHTML(evento) {
     const div = document.createElement('div');
     div.innerHTML = ` <div class="grid-tarjetas__grid-card-element"  aria-labelledby="titulo-${evento.nombre}">
-    <img class="blur-load"
-        src="${evento.img}" alt="Imagen evento ${evento.nombre}">
+    <a href="${evento.link}"><img class="blur-load"
+        src="${evento.img}" alt="Imagen evento ${evento.nombre}"></a>
     <div class="grid-tarjetas__grid-contenedor-titulo">
-        <h4>${evento.nombre}</h4>
+    <a href="${evento.link}"><h4>${evento.nombre}</h4></a>
         <span class="card-container__tag">${evento.ciudad}</span>
     </div>
     <p>${evento.descripcionCorta}</p>
@@ -159,6 +159,7 @@ export class GridEventos {
         this.contenedor.appendChild(eventoDiv);
       })
       animacionTarjetasEventos();
+      cargarParaBlur();
       ScrollTrigger.refresh();
     })
   }

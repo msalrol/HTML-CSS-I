@@ -11,19 +11,21 @@ document.addEventListener('DOMContentLoaded', () => {
     if (document.body.id === 'home') {
         cargarTarjetas();
     }
-    if (document.body.id === 'discotecas'){
+    if (document.body.id === 'discotecas') {
         cargarGridDiscotecas();
 
     }
-    if (document.body.id === 'festivales'){
+    if (document.body.id === 'festivales') {
         cargarGridFestivales();
 
     }
-    if (document.body.id === 'fiestas'){
+    if (document.body.id === 'fiestas') {
         cargarGridFiestas();
 
     }
     setTimeout(animacionTarjetasEventos, 300); // Esperamos un poco por si se insertan dinámicamente
+    cargarParaBlur();
+    cargarScrollInfinito();
 })
 
 //Preparamos tarjetas de eventos
@@ -31,11 +33,16 @@ function cargarTarjetas() {
     const discotecas = document.querySelector('.discotecas');
     const fiestas = document.querySelector('.fiestas');
     const festivales = document.querySelector('.festivales');
-    const contenedoresScroll = document.querySelectorAll('.scroll-infinito');
 
     new CarouselCards(datosapp.discotecas, discotecas).generarTarjeta().montarCarousel().comportamientoBoton();
     new CarouselCards(datosapp.fiestas, fiestas).generarTarjeta().montarCarousel().comportamientoBoton();
     new CarouselCards(datosapp.festivales, festivales).generarTarjeta().montarCarousel().comportamientoBoton();
+
+}
+
+//Cargamos scrolls infinitos
+function cargarScrollInfinito() {
+    const contenedoresScroll = document.querySelectorAll('.scroll-infinito');
     contenedoresScroll.forEach(el => {
         new ScrollInfinito(el).generarScrollInfinito();
     })
@@ -46,38 +53,39 @@ function cargarGridDiscotecas() {
     const gridDiscotecas = document.querySelector('.grid-discotecas');
 
     new GridEventos(datosapp.discotecas, gridDiscotecas).generarGrid().activarFiltros();
-    
+
 
 }
 function cargarGridFestivales() {
     const gridFestivales = document.querySelector('.grid-festivales');
 
     new GridEventos(datosapp.festivales, gridFestivales).generarGrid().activarFiltros();
-    
+
 
 }
 function cargarGridFiestas() {
     const gridFiestas = document.querySelector('.grid-fiestas');
 
     new GridEventos(datosapp.fiestas, gridFiestas).generarGrid().activarFiltros();
-    
+
 
 }
 // Lazy load y observer
+export function cargarParaBlur() {
+    const elementosCargar = document.querySelectorAll('.blur-load');
 
-const elementosCargar = document.querySelectorAll('.blur-load');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('blur-load__visible')
+            }
+        })
+    }, { threshold: 0.4 })
 
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('blur-load__visible')
-        }
+    elementosCargar.forEach(el => {
+        observer.observe(el);
     })
-}, { threshold: 0.4 })
-
-elementosCargar.forEach(el => {
-    observer.observe(el);
-})
+}
 
 //Animaciones GSAP
 export function animacionTarjetasEventos() {
@@ -94,8 +102,8 @@ export function animacionTarjetasEventos() {
             scrollTrigger: {
                 trigger: el,
                 start: "top 80%",
-                end: "top 30%",
-                scrub: true
+                end: "top 30%"
+                //scrub: true
             }
         })
     })
@@ -120,10 +128,23 @@ imagenesPortadaInterna.forEach(img => {
 const smoother = ScrollSmoother.create({
     wrapper: "#smooth-wrapper",
     content: "#smooth-content",
-    smooth: 1.35, // controla la suavidad (más alto = más lento)
-    effects: true // permite usar efectos parallax si los usas
+    smooth: 1.35, 
+    effects: true 
 });
 
+//Hacer stickys las columnas (chocan con el smoothscroller)
+const stickyColumns = document.querySelectorAll(".contenedor-evento-interno__columna-sticky");
+
+stickyColumns.forEach(stickyCol =>{
+    ScrollTrigger.create({
+        trigger: ".contenedor-evento-interno", 
+        start: "top top",       
+        end: "bottom bottom",   
+        pin: stickyCol,        
+        pinSpacing: false,     
+        scrub: true           
+      });
+})
 
 
 
