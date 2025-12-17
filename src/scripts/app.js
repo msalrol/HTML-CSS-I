@@ -112,7 +112,7 @@ export function animacionTarjetasEventos() {
 const imagenesPortadaInterna = document.querySelectorAll('.imagen-portada-interna');
 imagenesPortadaInterna.forEach(img => {
     gsap.to(img, {
-        x: -400, // prueba con -300, -400, -500...
+        x: -400, 
         scrollTrigger: {
             trigger: img,
             start: "top bottom",
@@ -128,24 +128,25 @@ imagenesPortadaInterna.forEach(img => {
 const smoother = ScrollSmoother.create({
     wrapper: "#smooth-wrapper",
     content: "#smooth-content",
-    smooth: 1.35, 
-    effects: true 
+    smooth: 1.35,
+    effects: true
 });
 
 //Hacer stickys las columnas (chocan con el smoothscroller)
 const stickyColumns = document.querySelectorAll(".contenedor-evento-interno__columna-sticky");
 
-stickyColumns.forEach(stickyCol =>{
-    ScrollTrigger.create({
-        trigger: ".contenedor-evento-interno", 
-        start: "top top",       
-        end: "bottom bottom",   
-        pin: stickyCol,        
-        pinSpacing: false,     
-        scrub: true           
-      });
-})
-
+if (window.innerWidth > 770) {
+    stickyColumns.forEach(stickyCol => {
+        ScrollTrigger.create({
+            trigger: ".contenedor-evento-interno",
+            start: "top top",
+            end: "bottom bottom",
+            pin: stickyCol,
+            pinSpacing: false,
+            scrub: true
+        });
+    })
+}
 
 
 

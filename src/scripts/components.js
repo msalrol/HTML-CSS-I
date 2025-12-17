@@ -32,8 +32,21 @@ export class CarouselCards {
     return `
         <div class="card-container__card-element" role="article"
         aria-labelledby="titulo-${el.nombre}">
-        <img class="blur-load" src="${el.img}"
-          alt="${el.nombre}">
+        <picture>
+          <source type="image/avif"
+            srcset="
+            ${el.imgLowAVIF} 480w,
+            ${el.imgHighAVIF} 1200w"
+            sizes="(max-width:768px) 480px, 1200px">
+
+          <source type="image/jpeg"
+            srcset="
+            ${el.imgLowJPG} 480w,
+            ${el.imgHighJPG} 1200w"
+            sizes="(max-width:768px) 480px, 1200px">
+
+            <img src="${el.imgBase}-1200.jpg" alt="${el.nombre}">
+        </picture>
         <div class="card-container__contenedor-titulo">
           <h4>${el.nombre}</h4>
           <span class="card-container__tag">${el.ciudad}</span>
@@ -70,6 +83,14 @@ export class CarouselCards {
     this.contenedorTarjetas.style.display = "flex";
     this.contenedorTarjetas.style.transition = "transform 0.4s ease";
     this.padre.style.overflow = "hidden";
+    this.button.setAttribute('tabindex', '0');
+
+    this.button.addEventListener('keydown', (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault(); 
+        this.button.click();
+      }
+    });
 
     this.button.addEventListener('click', () => {
       index++;
@@ -175,6 +196,13 @@ export class ScrollInfinito {
   constructor(contenedor) {
     this.contenedor = contenedor;
     this.colores = ["#77F773", "#73E8F7", "#F77375", "#8D73F7"];
+
+    this.contenedor.addEventListener('mouseover', () =>{
+      this.contenedor.style.animationPlayState = 'paused';
+    })
+    this.contenedor.addEventListener('mouseout', () => {
+      this.contenedor.style.animationPlayState = 'running';
+    });
   }
 
   createSVG(color1, color2) {
@@ -188,18 +216,33 @@ export class ScrollInfinito {
 
   generarScrollInfinito() {
     const numCopies = 20;
+    const fragment = document.createDocumentFragment();
+  
     for (let i = 0; i < numCopies; i++) {
       const div = document.createElement("div");
       div.classList.add("shape");
+  
       const color1 = this.colores[i % this.colores.length];
       const color2 = this.colores[(i + 1) % this.colores.length];
       div.innerHTML = this.createSVG(color1, color2);
-      this.contenedor.appendChild(div);
+  
+      fragment.appendChild(div);
     }
-    this.contenedor.innerHTML += this.contenedor.innerHTML;
+  
+    // Insertamos una vez
+    this.contenedor.appendChild(fragment);
+  
+    // Clonamos SOLO las shapes
+    const clones = Array.from(this.contenedor.children).map(el =>
+      el.cloneNode(true)
+    );
+  
+    clones.forEach(clone => this.contenedor.appendChild(clone));
+  
     requestAnimationFrame(() => this.calcularTiempoAnimacion());
   }
-
+  
+  
   calcularTiempoAnimacion() {
     const anchoContenedor = this.contenedor.clientWidth;
     const velocidadAnimacion = 120;
@@ -207,7 +250,6 @@ export class ScrollInfinito {
 
     this.contenedor.style.animationDuration = `${duracion}s`;
   }
-
 
 }
 
