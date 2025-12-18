@@ -45,7 +45,7 @@ export class CarouselCards {
             ${el.imgHighJPG} 1200w"
             sizes="(max-width:768px) 480px, 1200px">
 
-            <img src="${el.imgBase}-1200.jpg" alt="${el.nombre}">
+            <img src="${el.img}-1200.jpg" alt="${el.nombre}">
         </picture>
         <div class="card-container__contenedor-titulo">
           <h4>${el.nombre}</h4>
