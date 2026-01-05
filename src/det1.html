@@ -5,13 +5,32 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>La ruta ibérica – Discoteca Barraca</title>
-    <link rel="stylesheet" href="assets/styles/main.scss">
+    <!-- Carga crítica de CSS -->
+    <link rel="preload" href="assets/styles/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="assets/styles/main.css"></noscript>
 </head>
 <style>
     @media (max-width: 768px) {
         .scroll-infinito {
             display: none !important;
         }
+    }
+
+    /* Tamaño responsivo del iframe */
+    .video-youtube {
+        position: relative;
+        width: 100%;
+        padding-bottom: 56.25%; /* 16:9 */
+        height: 0;
+    }
+
+    .video-youtube iframe,
+    .video-youtube .lite-yt {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
     }
 </style>
 
@@ -28,117 +47,87 @@
                         <div class="columna-flex__mitad" style="background-color:black">
                             <h1>Barraca</h1>
                         </div>
-                        <div class="columna-flex__mitad scroll-infinito">
-                        </div>
+                        <div class="columna-flex__mitad scroll-infinito"></div>
                     </div>
+
                     <div class="contenedor-evento-interno">
                         <div class="contenedor-evento-interno__columna-mitad">
+                            <!-- Imágenes optimizadas -->
                             <picture>
                                 <source type="image/avif"
-                                    srcset="
-                                        assets/images/optimizadas/discoteca-barraca-club-valencia-ruta-iberica-480.avif 480w,
-                                        assets/images/optimizadas/discoteca-barraca-club-valencia-ruta-iberica-1200.avif 1200w"
+                                    srcset="assets/images/optimizadas/discoteca-barraca-club-valencia-ruta-iberica-480.avif 480w,
+                                            assets/images/optimizadas/discoteca-barraca-club-valencia-ruta-iberica-1200.avif 1200w"
                                     sizes="(max-width: 900px) 100vw, 1200px">
-
                                 <source type="image/jpeg"
-                                    srcset="
-                                        assets/images/optimizadas/discoteca-barraca-club-valencia-ruta-iberica-480.jpg 480w,
-                                        assets/images/optimizadas/discoteca-barraca-club-valencia-ruta-iberica-1200.jpg 1200w"
+                                    srcset="assets/images/optimizadas/discoteca-barraca-club-valencia-ruta-iberica-480.jpg 480w,
+                                            assets/images/optimizadas/discoteca-barraca-club-valencia-ruta-iberica-1200.jpg 1200w"
                                     sizes="(max-width: 900px) 100vw, 1200px">
-
-                                <img class="blur-load"
-                                    src="assets/images/discoteca-barraca-club-valencia-ruta-iberica.jpg"
-                                    alt="Discoteca de Barraca en Valencia" width="1200" height="800"
-                                    fetchpriority="high" style="width:100%;">
+                                <img class="blur-load" src="assets/images/discoteca-barraca-club-valencia-ruta-iberica.jpg"
+                                    alt="Discoteca de Barraca en Valencia" width="1200" height="800" fetchpriority="high" style="width:100%;">
                             </picture>
 
-
                             <picture>
-                                <source type="image/avif" srcset="
-                                        assets/images/optimizadas/discoteca-barraca-valencia-2-480.avif 1x,
-                                        assets/images/optimizadas/discoteca-barraca-valencia-2-1200.avif 2x">
-
-                                <source type="image/jpeg" srcset="
-                                        assets/images/optimizadas/discoteca-barraca-valencia-2-480.jpg 1x,
-                                        assets/images/optimizadas/discoteca-barraca-valencia-2-1200.jpg 2x">
-
+                                <source type="image/avif"
+                                    srcset="assets/images/optimizadas/discoteca-barraca-valencia-2-480.avif 480w,
+                                            assets/images/optimizadas/discoteca-barraca-valencia-2-1200.avif 1200w"
+                                    sizes="(max-width: 900px) 100vw, 1200px">
+                                <source type="image/jpeg"
+                                    srcset="assets/images/optimizadas/discoteca-barraca-valencia-2-480.jpg 480w,
+                                            assets/images/optimizadas/discoteca-barraca-valencia-2-1200.jpg 1200w"
+                                    sizes="(max-width: 900px) 100vw, 1200px">
                                 <img class="blur-load" src="assets/images/discoteca-barraca-valencia-2.jpg" width="1200"
-                                    height="800" alt="Discoteca de Barraca en Valencia">
-                            </picture>
-
-                            <picture>
-                                <source type="image/avif" srcset="
-                                        assets/images/optimizadas/discoteca-barraca-valencia-3-480.avif 1x,
-                                        assets/images/optimizadas/discoteca-barraca-valencia-3-1200.avif 2x">
-
-                                <source type="image/jpeg" srcset="
-                                        assets/images/optimizadas/discoteca-barraca-valencia-3-480.jpg 1x,
-                                        assets/images/optimizadas/discoteca-barraca-valencia-3-1200.jpg 2x">
-
-                                <img class="blur-load" src="assets/images/discoteca-barraca-valencia-3.jpg" width="1200"
                                     height="800" loading="lazy" alt="Discoteca de Barraca en Valencia">
                             </picture>
 
+                            <picture>
+                                <source type="image/avif"
+                                    srcset="assets/images/optimizadas/discoteca-barraca-valencia-3-480.avif 480w,
+                                            assets/images/optimizadas/discoteca-barraca-valencia-3-1200.avif 1200w"
+                                    sizes="(max-width: 900px) 100vw, 1200px">
+                                <source type="image/jpeg"
+                                    srcset="assets/images/optimizadas/discoteca-barraca-valencia-3-480.jpg 480w,
+                                            assets/images/optimizadas/discoteca-barraca-valencia-3-1200.jpg 1200w"
+                                    sizes="(max-width: 900px) 100vw, 1200px">
+                                <img class="blur-load" src="assets/images/discoteca-barraca-valencia-3.jpg" width="1200"
+                                    height="800" loading="lazy" alt="Discoteca de Barraca en Valencia">
+                            </picture>
                         </div>
+
                         <div class="contenedor-evento-interno__columna-mitad contenedor-evento-interno__columna-sticky">
                             <span>Valencia</span>
-                            <p>Barraca se ha consolidado como uno de los más importantes clubes underground de
-                                España y es donde se lleva a cabo una de las programaciones más reclamadas de
-                                nuestro país. Es sin duda alguna una de las referencias indiscutibles del clubbing
-                                nacional. Tras más de 50 años en la elite, el club ha cambiado, la gente ha
-                                cambiado, todo ha cambiado, excepto la ilusión de su gente que sigue intacta desde
-                                el primer día. Techno, electro, house y minimal vienen de la mano en este club que
-                                nos gusta definir como ecléctico, cosmopolita, multicultural y de mente abierta.
-                            </p>
-                            <p>Esucha el sonido de Barraca:</p>
-                            <div class="sonido-enlace">
-                                <div class="video-youtube">
-                                    <iframe data-src="https://www.youtube.com/embed/a6-dxiS9vdM?si=4qIcbvjTcT82Glkv"
-                                        title="Video Barraca Music" width="600" height="400" frameborder="0"
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                        allowfullscreen>
-                                    </iframe>
-                                </div>
-                                <a class="enlace-discoteca" target="blank" href="https://barracamusic.com"
-                                    aria-label="Enlace a la página oficial de barraca">
-                                    <p>Ir a la página ofiical</p>
-                                    <svg width="
-                                        65" height="15" viewBox="0 0 65 15" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M63.91 8.07112C64.3006 7.6806 64.3006 7.04743 63.91 6.65691L57.5461 0.292946C57.1555 -0.0975785 56.5224 -0.0975785 56.1319 0.292946C55.7413 0.68347 55.7413 1.31664 56.1319 1.70716L61.7887 7.36401L56.1319 13.0209C55.7413 13.4114 55.7413 14.0446 56.1319 14.4351C56.5224 14.8256 57.1555 14.8256 57.5461 14.4351L63.91 8.07112ZM0 7.36401V8.36401H63.2029V7.36401V6.36401H0V7.36401Z"
-                                            fill="white" />
-                                    </svg>
-                                </a>
+                            <p>Barraca se ha consolidado como uno de los más importantes clubes underground de España...</p>
+                            <p>Escucha el sonido de Barraca:</p>
+
+                            <!-- Lazy YouTube -->
+                            <div class="sonido-enlace video-youtube">
+                                <lite-youtube videoid="a6-dxiS9vdM" title="Video Barraca Music"></lite-youtube>
                             </div>
+
+                            <a class="enlace-discoteca" target="_blank" href="https://barracamusic.com"
+                                aria-label="Enlace a la página oficial de Barraca">
+                                <p>Ir a la página oficial</p>
+                                <svg width="65" height="15" viewBox="0 0 65 15" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M63.91 8.07112C64.3006 7.6806 64.3006 7.04743 63.91 6.65691L57.5461 0.292946C57.1555 -0.0975785 56.5224 -0.0975785 56.1319 0.292946C55.7413 0.68347 55.7413 1.31664 56.1319 1.70716L61.7887 7.36401L56.1319 13.0209C55.7413 13.4114 55.7413 14.0446 56.1319 14.4351C56.5224 14.8256 57.1555 14.8256 57.5461 14.4351L63.91 8.07112ZM0 7.36401V8.36401H63.2029V7.36401V6.36401H0V7.36401Z"
+                                        fill="white" />
+                                </svg>
+                            </a>
                         </div>
 
                     </div>
-
                 </div>
             </section>
+
             <footer>
                 <include src="assets/includes/footer.html"></include>
             </footer>
         </div>
     </main>
-    </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const iframes = document.querySelectorAll('iframe[data-src]');
-            const observer = new IntersectionObserver(entries => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const iframe = entry.target;
-                        iframe.src = iframe.dataset.src;
-                        observer.unobserve(iframe);
-                    }
-                });
-            }, { rootMargin: '200px' }); // empieza a cargar un poco antes de que aparezca
-            iframes.forEach(f => observer.observe(f));
-        });
-    </script>
-    <script type="module" src="scripts/app.js"></script>
+
+    <!-- Lite YouTube Embed JS -->
+    <script type="module" src="https://cdn.jsdelivr.net/gh/paulirish/lite-youtube-embed@1.0.0/src/lite-yt-embed.js" defer></script>
+    <script type="module" src="scripts/app.js" defer></script>
 </body>
 
 </html>
