@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>La ruta ibérica – Discoteca Razzmatazz</title>
 
+  <link rel="stylesheet" href="assets/styles/main.scss">
   <style>
     body {
       margin: 0;
@@ -13,26 +14,50 @@
       background-color: black;
       color: white;
     }
+
     h1 {
       margin: 0;
       font-size: 2rem;
       padding: 2rem;
     }
+
     .columna-flex {
       display: flex;
       flex-wrap: wrap;
     }
+
     .columna-flex__mitad {
       flex: 1 1 50%;
     }
+
     @media (max-width: 768px) {
       .scroll-infinito {
         display: none !important;
       }
     }
-  </style>
 
-<link rel="stylesheet" href="assets/styles/main.scss">
+    .video-youtube {
+      position: relative;
+      width: 100%;
+      max-width: 600px;
+      cursor: pointer;
+    }
+
+    .video-youtube img,
+    .video-youtube svg.play-button {
+      width: 100%;
+      display: block;
+    }
+
+    .video-youtube svg.play-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 64px;
+      height: 64px;
+    }
+  </style>
 </head>
 
 <body>
@@ -53,6 +78,7 @@
 
           <div class="contenedor-evento-interno">
             <div class="contenedor-evento-interno__columna-mitad">
+              <!-- Imagen principal -->
               <picture>
                 <source type="image/avif" srcset="
                   assets/images/optimizadas/discoteca-razzmatazz-barcelona-480.avif 480w,
@@ -63,8 +89,8 @@
                   assets/images/optimizadas/discoteca-razzmatazz-barcelona-1200.jpg 1200w"
                   sizes="(max-width: 768px) 100vw, 50vw">
                 <img class="blur-load" src="assets/images/discoteca-razzmatazz-barcelona.jpg" width="1200"
-                  height="800" loading="lazy" fetchpriority="high" alt="Discoteca de Razzmatazz en Barcelona"
-                  style="width:100%;height:auto">
+                  height="800" loading="lazy" fetchpriority="high"
+                  alt="Discoteca de Razzmatazz en Barcelona" style="width:100%;height:auto">
               </picture>
 
               <picture>
@@ -76,8 +102,8 @@
                   assets/images/optimizadas/discoteca-razzmatazz-3-480.jpg 480w,
                   assets/images/optimizadas/discoteca-razzmatazz-3-1200.jpg 1200w"
                   sizes="(max-width: 768px) 100vw, 50vw">
-                <img class="blur-load" src="assets/images/discoteca-razzmatazz-3.jpg" width="1200"
-                  height="800" loading="lazy" alt="Discoteca de Razzmatazz en Barcelona" style="width:100%;height:auto">
+                <img class="blur-load" src="assets/images/discoteca-razzmatazz-3.jpg" width="1200" height="800"
+                  loading="lazy" alt="Discoteca de Razzmatazz en Barcelona" style="width:100%;height:auto">
               </picture>
             </div>
 
@@ -91,14 +117,13 @@
               <p>Escucha el sonido de Razzmatazz:</p>
 
               <div class="sonido-enlace">
-                <div class="video-youtube" style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;">
-                  <iframe data-src="https://www.youtube.com/embed/KFue9lJ176g?si=NJhYnuwi_4Y3orCh"
-                    title="Video Razzmatazz Music" frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen
-                    style="position:absolute;top:0;left:0;width:100%;height:100%;"
-                    loading="lazy">
-                  </iframe>
+                <!-- Contenedor de video optimizado -->
+                <div class="video-youtube" data-video="KFue9lJ176g">
+                  <img src="https://img.youtube.com/vi/KFue9lJ176g/hqdefault.jpg" alt="Video Razzmatazz Music">
+                  <svg class="play-button" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="32" cy="32" r="32" fill="rgba(0,0,0,0.5)" />
+                    <polygon points="26,20 26,44 46,32" fill="white" />
+                  </svg>
                 </div>
 
                 <a class="enlace-discoteca" target="_blank" href="https://www.salarazzmatazz.com/"
@@ -124,23 +149,29 @@
     </div>
   </main>
 
-  <script defer>
+  <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const iframes = document.querySelectorAll('iframe[data-src]');
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const iframe = entry.target;
-            iframe.src = iframe.dataset.src;
-            observer.unobserve(iframe);
-          }
+      const videos = document.querySelectorAll('.video-youtube');
+      videos.forEach(video => {
+        video.addEventListener('click', () => {
+          const videoId = video.dataset.video;
+          const iframe = document.createElement('iframe');
+          iframe.width = "600";
+          iframe.height = "400";
+          iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+          iframe.title = "Video Razzmatazz Music";
+          iframe.frameBorder = "0";
+          iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+          iframe.allowFullscreen = true;
+          video.innerHTML = '';
+          video.appendChild(iframe);
         });
-      }, { rootMargin: '200px' });
-      iframes.forEach(f => observer.observe(f));
+      });
     });
   </script>
 
-  <script type="module" src="scripts/app.js" defer></script>
+  <script type="module" src="scripts/app.js"></script>
 </body>
 
 </html>
+
