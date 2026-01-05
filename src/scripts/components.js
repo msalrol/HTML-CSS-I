@@ -45,7 +45,7 @@ export class CarouselCards {
             ${el.imgHighJPG} 1200w"
             sizes="(max-width:768px) 480px, 1200px">
 
-            <img src="${el.img}-1200.jpg" alt="${el.nombre}">
+            <img src="${el.img}-1200.jpg" loading="lazy" alt="${el.nombre}">
         </picture>
         <div class="card-container__contenedor-titulo">
           <h4>${el.nombre}</h4>
@@ -130,7 +130,7 @@ export class GridEventos {
     const div = document.createElement('div');
     div.innerHTML = ` <div class="grid-tarjetas__grid-card-element"  aria-labelledby="titulo-${evento.nombre}">
     <a href="${evento.link}"><img class="blur-load"
-        src="${evento.img}" alt="Imagen evento ${evento.nombre}"></a>
+        src="${evento.img}"  loading="lazy" alt="Imagen evento ${evento.nombre}"></a>
     <div class="grid-tarjetas__grid-contenedor-titulo">
     <a href="${evento.link}"><h4>${evento.nombre}</h4></a>
         <span class="card-container__tag">${evento.ciudad}</span>
