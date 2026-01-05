@@ -27,61 +27,46 @@
                         <div class="contenedor-evento-interno">
                             <div class="contenedor-evento-interno__columna-mitad">
                                 <picture>
-                                    <source type="image/avif"
-                                        srcset="
+                                    <source type="image/avif" srcset="
                                             assets/images/optimizadas/discoteca-pacha-ibiza-480.avif 1x,
-                                            assets/images/optimizadas/discoteca-pacha-ibiza-1200.avif 2x"
-                                        >
-    
-                                    <source type="image/jpeg"
-                                        srcset="
+                                            assets/images/optimizadas/discoteca-pacha-ibiza-1200.avif 2x">
+
+                                    <source type="image/jpeg" srcset="
                                             assets/images/optimizadas/discoteca-pacha-ibiza-480.jpg 1x,
-                                            assets/images/optimizadas/discoteca-pacha-ibiza-1200.jpg 2x"
-                                        >
-    
-                                    <img class="blur-load"
-                                        src="assets/images/discoteca-pacha-ibiza.jpg"
-                                        loading="lazy"
-                                        alt="Discoteca de Barraca en Valencia">
+                                            assets/images/optimizadas/discoteca-pacha-ibiza-1200.jpg 2x">
+
+                                    <img class="blur-load" src="assets/images/discoteca-pacha-ibiza.jpg" width="1200"
+                                        height="800" fetchpriority="high" style="width:100%" alt="Discoteca de Barraca en Valencia">
+                                    
+
                                 </picture>
 
                                 <picture>
-                                    <source type="image/avif"
-                                        srcset="
+                                    <source type="image/avif" srcset="
                                             assets/images/optimizadas/discoteca-pacha-ibiza-2-480.avif 1x,
-                                            assets/images/optimizadas/discoteca-pacha-ibiza-2-1200.avif 2x"
-                                        >
-    
-                                    <source type="image/jpeg"
-                                        srcset="
+                                            assets/images/optimizadas/discoteca-pacha-ibiza-2-1200.avif 2x">
+
+                                    <source type="image/jpeg" srcset="
                                             assets/images/optimizadas/discoteca-pacha-ibiza-2-480.jpg 1x,
-                                            assets/images/optimizadas/discoteca-pacha-ibiza-2-1200.jpg 2x"
-                                        >
-    
-                                    <img class="blur-load"
-                                        src="assets/images/discoteca-pacha-ibiza-2.jpg"
-                                        loading="lazy"
-                                        alt="Discoteca de Barraca en Valencia">
+                                            assets/images/optimizadas/discoteca-pacha-ibiza-2-1200.jpg 2x">
+
+                                    <img class="blur-load" src="assets/images/discoteca-pacha-ibiza-2.jpg"
+                                        loading="lazy" alt="Discoteca de Barraca en Valencia">
                                 </picture>
                                 <picture>
-                                    <source type="image/avif"
-                                        srcset="
+                                    <source type="image/avif" srcset="
                                             assets/images/optimizadas/discoteca-pacha-ibiza-3-480.avif 1x,
-                                            assets/images/optimizadas/discoteca-pacha-ibiza-3-1200.avif 2x"
-                                        >
-    
-                                    <source type="image/jpeg"
-                                        srcset="
+                                            assets/images/optimizadas/discoteca-pacha-ibiza-3-1200.avif 2x">
+
+                                    <source type="image/jpeg" srcset="
                                             assets/images/optimizadas/discoteca-pacha-ibiza-3-480.jpg 1x,
-                                            assets/images/optimizadas/discoteca-pacha-ibiza-3-1200.jpg 2x"
-                                        >
-    
-                                    <img class="blur-load"
-                                        src="assets/images/discoteca-pacha-ibiza-3.jpg"
-                                        loading="lazy"
-                                        alt="Discoteca de Barraca en Valencia">
+                                            assets/images/optimizadas/discoteca-pacha-ibiza-3-1200.jpg 2x">
+
+                                    <img class="blur-load" src="assets/images/discoteca-pacha-ibiza-3.jpg"
+                                    width="1200"
+                                    height="800" alt="Discoteca de Barraca en Valencia">
                                 </picture>
-                               
+
                             </div>
                             <div
                                 class="contenedor-evento-interno__columna-mitad contenedor-evento-interno__columna-sticky">
@@ -95,6 +80,8 @@
                                 <div class="sonido-enlace">
                                     <div class="video-youtube">
                                         <iframe src="https://www.youtube.com/embed/YQg-YHJxg4E?si=3B8VZpMyE3A1Rc4e"
+                                        width="600" height="400"
+                                        loading="lazy"
                                             title="Video Pacha Ibiza" frameborder="0"
                                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                             allowfullscreen>
@@ -124,6 +111,21 @@
             </div>
         </main>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const iframes = document.querySelectorAll('iframe[data-src]');
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const iframe = entry.target;
+                        iframe.src = iframe.dataset.src;
+                        observer.unobserve(iframe);
+                    }
+                });
+            }, { rootMargin: '200px' }); // empieza a cargar un poco antes de que aparezca
+            iframes.forEach(f => observer.observe(f));
+        });
+    </script>
     <script type="module" src="scripts/app.js"></script>
 </body>
 

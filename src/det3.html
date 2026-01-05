@@ -36,7 +36,8 @@
                                             assets/images/optimizadas/discoteca-razzmatazz-barcelona-1200.jpg 2x">
 
                                     <img class="blur-load" src="assets/images/discoteca-razzmatazz-barcelona.jpg"
-                                        loading="lazy" alt="Discoteca de Barraca en Valencia">
+                                    width="1200"
+                                    height="800" fetchpriority="high" alt="Discoteca de Barraca en Valencia">
                                 </picture>
 
                                 <picture>
@@ -49,7 +50,8 @@
                                             assets/images/optimizadas/discoteca-razzmatazz-3-1200.jpg 2x">
 
                                     <img class="blur-load" src="assets/images/discoteca-razzmatazz-3.jpg"
-                                    loading="lazy"
+                                    width="1200"
+                                    height="800"
                                         alt="Discoteca de Barraca en Valencia">
                                 </picture>
                             </div>
@@ -66,6 +68,8 @@
                                     <div class="video-youtube">
                                         <iframe src="https://www.youtube.com/embed/KFue9lJ176g?si=NJhYnuwi_4Y3orCh"
                                             title="Video Razzmatazz Barcelona" frameborder="0"
+                                            width="600" height="400"
+                                            loading="lazy"
                                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                             allowfullscreen>
                                         </iframe>
@@ -94,6 +98,21 @@
             </div>
         </main>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const iframes = document.querySelectorAll('iframe[data-src]');
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const iframe = entry.target;
+                        iframe.src = iframe.dataset.src;
+                        observer.unobserve(iframe);
+                    }
+                });
+            }, { rootMargin: '200px' }); // empieza a cargar un poco antes de que aparezca
+            iframes.forEach(f => observer.observe(f));
+        });
+    </script>
     <script type="module" src="scripts/app.js"></script>
 </body>
 
