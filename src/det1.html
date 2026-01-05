@@ -25,19 +25,19 @@
         cursor: pointer;
     }
 
-    .video-youtube img {
+    .video-youtube img,
+    .video-youtube svg.play-button {
         width: 100%;
         display: block;
     }
 
-    .video-youtube .play-button {
+    .video-youtube svg.play-button {
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
         width: 64px;
         height: 64px;
-        background: url('assets/icons/play-button.svg') center/contain no-repeat;
     }
 </style>
 
@@ -115,13 +115,14 @@
 
                             <!-- Placeholder del video -->
                             <div class="video-youtube">
-                                <img src="https://img.youtube.com/vi/a6-dxiS9vdM/hqdefault.jpg" alt="Video Barraca Music">
-                                <svg class="play-button" width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="32" cy="32" r="32" fill="rgba(0,0,0,0.5)"/>
-                                    <polygon points="26,20 26,44 46,32" fill="white"/>
+                                <img src="https://img.youtube.com/vi/a6-dxiS9vdM/hqdefault.jpg"
+                                    alt="Video Barraca Music">
+                                <svg class="play-button" width="64" height="64" viewBox="0 0 64 64"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="32" cy="32" r="32" fill="rgba(0,0,0,0.5)" />
+                                    <polygon points="26,20 26,44 46,32" fill="white" />
                                 </svg>
                             </div>
-                            
 
                             <a class="enlace-discoteca" target="blank" href="https://barracamusic.com"
                                 aria-label="Enlace a la página oficial de barraca">
